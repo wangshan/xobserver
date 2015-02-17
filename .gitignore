@@ -3,3 +3,6 @@
 .DS_Store
 build/
 dist/
+test/unittest/testmain*
+test/performance/testmain*
+

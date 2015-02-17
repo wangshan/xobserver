@@ -1,24 +1,24 @@
 DEPENDENCY_ROOT ?= ${HOME}/sandbox/3rdParty
 
 ifndef OS
-	OS:= $(shell uname -s)
+  OS:= $(shell uname -s)
 endif
 
 ifeq ($(OS),Linux)
-	PARALLEL:=$(shell echo $$((`grep -c ^processor /proc/cpuinfo` / 2 + 1)))
-	ifeq ($(CC),gcc)
-		COMPILER:=$(shell gcc --version | head -n1  | awk '{print $$3}' | awk -F. '{print $$1 $$2}')
-	else
-		COMPILER:= $(CC)
-	endif
+  PARALLEL:=$(shell echo $$((`grep -c ^processor /proc/cpuinfo` / 2 + 1)))
+  ifeq ($(CC),gcc)
+    COMPILER:=$(shell gcc --version | head -n1  | awk '{print $$3}' | awk -F. '{print $$1 $$2}')
+  else
+    COMPILER:= $(CC)
+  endif
 else ifeq ($(OS),Darwin)
-	PARALLEL:=$(shell sysctl hw.ncpu | awk '{print $$2}')
-	ifeq ($(CC),cc)
-		#COMPILER:=$(shell llvm-gcc --version | head -n 1 | grep -o "clang-[0-9.-]*")
-		COMPILER:=clang-600
-	else
-		COMPILER:= $(CC)
-	endif
+  PARALLEL:=$(shell sysctl hw.ncpu | awk '{print $$2}')
+  ifeq ($(CC),cc)
+    #COMPILER:=$(shell llvm-gcc --version | head -n 1 | grep -o "clang-[0-9.-]*")
+    COMPILER:=clang-600
+  else
+    COMPILER:= $(CC)
+  endif
 else
 	$(error Unsupported operating system)
 endif
@@ -40,7 +40,7 @@ BUILD_DIR:=$(MAIN_DIR)/build/$(OS_TAG)
 # 3Party/Darwin-13.4-x86_64-gcc-4.8
 # 3Party/Darwin-13.4-x86_64-clang-3.5
 ifndef PKG_ROOT
-	PKG_ROOT:=$(DEPENDENCY_ROOT)/$(PLATFORM)
+  PKG_ROOT:=$(DEPENDENCY_ROOT)/$(PLATFORM)
 endif
 
 # version of packages on which the build depends

@@ -3,9 +3,7 @@
 MAIN_DIR=..
 
 include $(MAIN_DIR)/common.mk
-
-UNITTEST_DIR:=$(UNIT_TEST_DIR)
-PERFORMANCE_DIR:=$(PERF_TEST_DIR)
+include $(TEST_DIR)/common.mk
 
 
 all:

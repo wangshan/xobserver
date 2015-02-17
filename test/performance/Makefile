@@ -9,7 +9,7 @@ include $(TEST_DIR)/common.mk
 
 BUILD_DIR:=$(BUILD_DIR)/unittest
 
-PROG_SOURCES:=$(wildcard $(UNITTEST_DIR)/[a-zA-Z]*.cpp)
+PROG_SOURCES:=$(wildcard $(PERFORMANCE_DIR)/[a-zA-Z]*.cpp)
 PROG_OBJECTS:=$(addprefix $(BUILD_DIR)/,$(notdir $(PROG_SOURCES:.cpp=.o)))
 PROG_DEPENDS:=$(addprefix $(BUILD_DIR)/,$(notdir $(PROG_SOURCES:.cpp=.d)))
 
